@@ -13,10 +13,8 @@ class Shape(tk.Canvas):
         self.W, self.H= size        
         super().__init__(div, width=self.W, height=self.H, bg=bg, bd=0, **kwargs)
         self.place(relx= psn[X], rely= psn[Y])
-        self.purp= purp; self.psn= psn
-        self.shape= {'rect':self.rect}[shape]
-        self.clr = clr
-        self.shape()
+        self.purp= purp; self.psn= psn; self.clr = clr
+        self.shape= {'rect':self.rect}[shape]; self.shape()
 
     def rect(self):
         self.create_rectangle([0,0], [self.W,self.H], fill=self.clr, outline="", tags=self.purp)
@@ -44,7 +42,7 @@ class ProgBar(ttk.Progressbar):
         
         self.place(relx=self.relx, rely=self.rely, width=self.W, height=self.H)
         self.lvl= lvl
-        self.updateLvl()
+        self.update()
 
     def clrMap(self):
         if self.lvl<50:
@@ -53,35 +51,26 @@ class ProgBar(ttk.Progressbar):
             r, g, b= {'n':[0, 50+2*self.lvl, (self.lvl-50)*5],'r':[(self.lvl-50)*5, 250-2*self.lvl, 0]}[self.ver]        
         return '#{0:02X}{1:02X}{2:02X}'.format(r, g, b)
 
-    def updateLvl(self):
+    def update(self):
         self['value'] = self.lvl        
         self.clr = self.clrMap()        
-        self.style.configure(self.style_name, background=self.clr)
-        self.after(50, self.updateLvl)
+        self.style.configure(self.style_name, background=self.clr)        
 
     def show(self):
         self.place(relx= self.psn[X], rely=self.psn[Y], width= self.W, height= self.H)
-
-    def aug(self, new_lvl):
-        self.lvl= new_lvl
 
 class Label(tk.Label):
     def __init__(self, info):
         div, txt, clr, psn, fontsize, purp= info
         self.txt= txt; self.purp= purp; self.psn= psn
         super().__init__(div, text=self.txt, fg=clr, bg=div.bg, font=('LCD', int(fontsize), 'bold')) #News Gothic MT
-        self.place(relx=psn[X], rely=psn[Y])
-        self.tick()
+        self.place(relx=psn[X], rely=psn[Y])        
 
-    def tick(self):
-        self.configure(text= self.txt)
-        self.after(50, self.tick)
+    def update(self):
+        self.configure(text= self.txt)        
 
     def show(self):
         self.place(relx= self.psn[X], rely=self.psn[Y])
-
-    def aug(self, new_txt):
-        self.txt= new_txt
 
 class Image(tk.Label):
     def __init__(self, info):
@@ -93,44 +82,38 @@ class Image(tk.Label):
 
     def show(self):
         self.place(relx= self.psn[X], rely=self.psn[Y])
-
-    def hide(self):
-        self.place_forget()
-
-    def aug(self, hos):
-        hos()
         
 class Div(tk.Canvas):
-    def __init__(self, dash, ind, width, height, bg, border_color, **kwargs):
+    def __init__(self, dash, ind, width, height, bg, border_color, sw, **kwargs):
         self.H, self.W= width, height
         self.bg= bg
         super().__init__(dash, width=width, height=height, bg=bg, highlightbackground=border_color, highlightthickness=1, **kwargs)
-        self.ind= ind; self.sw= 0
-
-    def widgets(self):
-        return self.winfo_children()
-
-    def clear(self):
-        for widget in self.widgets():
-            widget.place_forget()
+        if {'x':False, 'v':True}[sw]:
+            self.sw= tk.Button(self, text='SW', command= self.switch)
+            self.sw.place(relx= 0, rely= 0)
+        self.cur= 0
 
     def switch(self):
-        for switch in self.wdts:
-            for wdt in switch:
+        for s in range(len(self.wdts)):
+            for wdt in self.wdts[s]:
                 wdt.place_forget()
-        for wdt in self.wdts[self.sw]:
-            wdt.show()
-        self.after(100, self.switch)
+            if s==self.cur:
+                for wdt in self.wdts[s]:
+                    wdt.show()
+        self.cur+=1
+        if self.cur== self.mds:
+            self.cur=0
 
     def create(self, wdts_data):
         self.wdts= [[] for i in range(len(wdts_data))]        
-        i= -1
-        for switch in wdts_data:
-            i+=1
+        i= 0
+        for switch in wdts_data:            
             for wdt_data in switch:                
                 new_wdt= wdt_data['wdt'](wdt_data['info'])
-                self.wdts[i].append(new_wdt)
-        self.switch()
+                self.wdts[i].append(new_wdt) 
+            i+=1 
+        self.mds= len(self.wdts)   
+        self.switch()    
 
 class Main(tk.Tk):
     def __init__(self, color, size, title, **kwargs):
@@ -141,8 +124,8 @@ class Main(tk.Tk):
         self.title(title)                
 
     def create(self, divs_data):
-        clr, w, h, psn, bg= 0, 1, 2, 3, 4
+        clr, w, h, psn, bg, sw= 0, 1, 2, 3, 4, 5
         for div_data in divs_data:
-            div = Div(self, self.ind, div_data[w], div_data[h], div_data[clr], div_data[bg])
+            div = Div(self, self.ind, div_data[w], div_data[h], div_data[clr], div_data[bg], div_data[sw])
             div.place(relx=div_data[psn][X], rely=div_data[psn][Y])    
             self.divs.append(div); self.ind+=1            
