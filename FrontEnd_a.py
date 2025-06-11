@@ -34,7 +34,7 @@ Rpm_Lbl= {'wdt':Label, 'info':(divs[9], 'RPM', '#00aeb4', (0.35,0.8), 20, 'Rpm_L
 
 #Center Bottom~ ind 10
 Gear= {'wdt':Label, 'info':(divs[10], 'N', '#00aeb4', (0.08,0.02), 55, 'Gear')}
-SRT= {'wdt':Image, 'info':(divs[10], r"C:\Users\titus\Downloads\SRT.png", (0.45, 0.02), bg_clr, 'SRT')}
+#SRT= {'wdt':Image, 'info':(divs[10], r"C:\Users\titus\Downloads\SRT.png", (0.45, 0.02), bg_clr, 'SRT')}
 
 #Right Top~ ind 4
 Dist_Lbl= {'wdt':Label, 'info':(divs[4], 'Distance', '#00aeb4', (0.08,0.02), 27, 'Dist_Lbl')}
@@ -68,7 +68,7 @@ Brk_Lbl= {'wdt':Label, 'info':(divs[7], 'BR', '#d49e2a', (0.55,0.02), 16, 'Brk_L
 Btt_Tmp= {'wdt':ProgBar, 'info':(divs[7], (50,130), (0.1,0.5), 'h', 'Btt_Tmp', 'clam', 95, bg_clr, 'r')}
 Btt_Tmp_Val= {'wdt':Label, 'info':(divs[7], '65.10', '#d49e2a', (0.12,0.02), 20, 'Btt_Tmp_Val')}
 Btt_Tmp_Lbl= {'wdt':Label, 'info':(divs[7], '°C', '#00aeb4', (0.2,0.22), 20, 'Btt_Tmp_Lbl')}
-Btt_Tmp_Wrng= {'wdt':Image, 'info':(divs[7], r"C:\Users\titus\Downloads\WarningTriangle.png", (0.6, 0.1), bg_clr, 'Btt_Tmp_Wrng')}
+#Btt_Tmp_Wrng= {'wdt':Image, 'info':(divs[7], r"C:\Users\titus\Downloads\WarningTriangle.png", (0.6, 0.1), bg_clr, 'Btt_Tmp_Wrng')}
 
 #Right Bottom C~ ind 7
 FL= {'wdt':ProgBar, 'info':(divs[7], (15,50), (0.3,0.05), 'v', 'FL', 'clam', 90, bg_clr, 'r')}
@@ -99,11 +99,11 @@ wdts_swtch3= [[]] #Left Bottom~ ind 3
 wdts_swtch4= [[Dist_Lbl, Dist, Dist_Unt]] #Right Top~ ind 4
 wdts_swtch5= [[Mode]] #Right 2nd~ ind 5
 wdts_swtch6= [[TPS],[Btt_Tmp_Ttl],[TPM],[BrTM]] #Right 3rd~ ind 6
-wdts_swtch7= [[Thrt, Brk, Thrt_Lbl, Brk_Lbl],[Btt_Tmp, Btt_Tmp_Val, Btt_Tmp_Lbl, Btt_Tmp_Wrng],
+wdts_swtch7= [[Thrt, Brk, Thrt_Lbl, Brk_Lbl],[Btt_Tmp, Btt_Tmp_Val, Btt_Tmp_Lbl],#, Btt_Tmp_Wrng],
               [FL, FR, RL, RR, FL_Lbl, FR_Lbl, RL_Lbl, RR_Lbl],[FL_Br, FR_Br, RL_Br, RR_Br, FL_Br_Lbl, FR_Br_Lbl, RL_Br_Lbl, RR_Br_Lbl]] #Right Bottom~ ind 7
 wdts_swtch8= [[Time]] #Center Top~ ind 8
 wdts_swtch9= [[Spd, Spd_Lbl, Rpm, Rpm_Lbl]] #Center Middle~ ind 9
-wdts_swtch10= [[Gear, SRT]] #Center Bottom~ ind 10
+wdts_swtch10= [[Gear]]#, SRT]] #Center Bottom~ ind 10
 
 divs_crt= [(divs[0],wdts_swtch0),(divs[1],wdts_swtch1),(divs[2],wdts_swtch2),(divs[3],wdts_swtch3),(divs[4],wdts_swtch4),(divs[5],wdts_swtch5),
            (divs[6],wdts_swtch6),(divs[7],wdts_swtch7),(divs[8],wdts_swtch8),(divs[9],wdts_swtch9),(divs[10],wdts_swtch10)]
