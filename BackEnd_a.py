@@ -27,9 +27,9 @@ class Shape(tk.Canvas):
 
 class ProgBar(ttk.Progressbar):
     def __init__(self, info):
-        div, size, psn, orntn, purp, style, lvl, clr, ver= info
+        div, size, psn, orntn, purp, style, lvl, clr, ver, rng= info
         o, tl= 0, 1        
-        self.purp = purp; self.ver= ver; self.psn= psn
+        self.purp = purp; self.ver= ver; self.psn= psn; self.rng= rng
         orntns = {'v':('Vertical',(0,1)), 'h':('Horizontal',(1,0))}
         self.orntn= orntns[orntn][o]
         self.W, self.H= size[orntns[orntn][tl][0]], size[orntns[orntn][tl][1]]        
@@ -51,11 +51,19 @@ class ProgBar(ttk.Progressbar):
         if self.txt<50:
             r, g, b= {'r':[0, 250-2*self.txt, 250-5*self.txt],'n':[250-5*self.txt, 50+2*self.txt, 0]}[self.ver]            
         else:
-            r, g, b= {'n':[0, 50+2*self.txt, (self.txt-50)*5],'r':[(self.txt-50)*5, 250-2*self.txt, 0]}[self.ver]        
+            r, g, b= {'n':[0, 50+2*self.txt, (self.txt-50)*5],'r':[(self.txt-50)*5, 250-2*self.txt, 0]}[self.ver]
         return '#{0:02X}{1:02X}{2:02X}'.format(r, g, b)
 
+    def adjust(self):
+        self.txt= int(15+((self.txt-self.rng[0])/(self.rng[1]-self.rng[0]))*80)
+        if self.txt>100:
+            self.txt= 80
+        elif self.txt<0:
+            self.txt= 15
+
     def update(self):
-        self['value'] = self.txt        
+        self.adjust()
+        self['value'] = self.txt      
         self.clr = self.clrMap()
         self.style.configure(self.style_name, background=self.clr)
 
