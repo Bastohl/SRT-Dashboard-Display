@@ -3,7 +3,8 @@ from BackEnd_a import Main,Image,Label,ProgBar,Shape
 W,H = 160,128
 bg_clr= ['#101010',"#d9d9d9"][0]
 
-Dash= Main('grey','480x320','Dashboard')
+Dash= Main('grey','480x320+0+0','Dashboard')
+Dash.overrideredirect(True)
 divs_swtch= [(bg_clr,W,H/4,[0,0],'grey','x'),(bg_clr,W,H,[0,0.1],'grey','x'),(bg_clr,W,H/4,[0,0.5],'grey','v'),(bg_clr,W,H,[0,0.6],'grey','v'),
             (bg_clr,W,H,[2/3,0],'grey','x'),(bg_clr,W,H/4,[2/3,0.4],'grey','x'),(bg_clr,W,H/4,[2/3,0.5],'grey','v'),(bg_clr,W,H,[2/3,0.6],'grey','v'),
             (bg_clr,W,H*0.3125,[1/3,0],'grey','x'),(bg_clr,W,H*1.5625,[1/3,0.125],'grey','x'),(bg_clr,W,H*0.625,[1/3,0.75],'grey','x')]
@@ -145,8 +146,12 @@ def update():
         widgets[wdt].txt= data[wdt]
         widgets[wdt].update()
     Dash.after(500,update)
-
 update()
+
+def exit_fullscreen(event):
+    Dash.destroy()
+Dash.bind("<Escape>", exit_fullscreen)
+
 Dash.mainloop()
 
 

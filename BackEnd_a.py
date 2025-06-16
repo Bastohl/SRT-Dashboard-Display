@@ -74,7 +74,7 @@ class Label(tk.Label):
     def __init__(self, info):
         div, txt, clr, psn, fontsize, purp, updble= info
         self.txt= txt; self.purp= purp; self.psn= psn; self.updble= {'u':True, 'f':False}[updble] #updateable or fixed
-        super().__init__(div, text=self.txt, fg=clr, bg=div.bg, font=('LCD', int(fontsize), 'bold')) #News Gothic MT
+        super().__init__(div, text=self.txt, fg=clr, bg=div.bg, font=('Imprint MT Shadow', int(fontsize*0.85), 'bold')) #Imprint MT Shadow
         self.place(relx=psn[X], rely=psn[Y])
 
     def update(self):
