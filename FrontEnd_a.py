@@ -25,8 +25,8 @@ Splt_lvhv= {'wdt':Shape, 'info':(divs[1], 'rect', (0.49,0.1), (0,106), 'grey', '
 Bspd= {'wdt':Label, 'info':(divs[2], 'BSPD', '#1ab876', (0.25,0.05), 18, 'Bspd','f')}
 
 #Center Top~ ind 8
-Time_Lbl= {'wdt':Label, 'info':(divs[8], 'Time: ', 'grey', (0.08,0.08), 20, 'Time_Lbl','f')}
-Time= {'wdt':Label, 'info':(divs[8], '00:00', 'grey', (0.48,0.08), 20, 'Time','u')}
+Time_Lbl= {'wdt':Label, 'info':(divs[8], 'Time: ', 'grey', (0.03,0.08), 20, 'Time_Lbl','f')}
+Time= {'wdt':Label, 'info':(divs[8], '00:00', 'grey', (0.43,0.08), 20, 'Time','u')}
 
 #Center Middle~ ind 9
 Spd= {'wdt':Label, 'info':(divs[9], '81.4', '#d1733c', (0.12,0.02), 60, 'Spd','u')}
@@ -118,8 +118,16 @@ wdts_swtch10= [[Gear, SRT]] #Center Bottom~ ind 10
 divs_crt= [(divs[0],wdts_swtch0),(divs[1],wdts_swtch1),(divs[2],wdts_swtch2),(divs[3],wdts_swtch3),(divs[4],wdts_swtch4),(divs[5],wdts_swtch5),
            (divs[6],wdts_swtch6),(divs[7],wdts_swtch7),(divs[8],wdts_swtch8),(divs[9],wdts_swtch9),(divs[10],wdts_swtch10)]
 
-def rd():
-    return random.randint(0,99)
+def collect_data():
+    sample_data= {'LV_Prg': 60, 'HV_Prg': 20, 'Dist': 17.51, 'Thrt': 15, 'Brk': 90, 
+                  'Btt_Tmp': 50, 'Btt_Tmp_Val': 50, 
+                  'FL': 24, 'FR': 26, 'RL': 28, 'RR': 22, 
+                  'FL_Lbl': 24, 'FR_Lbl': 26, 'RL_Lbl': 28, 'RR_Lbl': 22, 
+                  'FL_Br': 15, 'FR_Br': 35, 'RL_Br': 60, 'RR_Br': 85, 
+                  'FL_Br_Lbl': 15, 'FR_Br_Lbl': 35, 'RL_Br_Lbl': 60, 'RR_Br_Lbl': 85, 
+                  'Time': '1:07:45', 'Spd': 57, 'Rpm': 1964, 'Gear': 'D'}
+    data= sample_data
+    return data
 
 widgets= {}
 for div, wdts in divs_crt:
@@ -129,13 +137,14 @@ for div, wdts in divs_crt:
             if wdt.updble:
                 widgets[wdt.purp]= wdt
 
-def test_update():
+def update():
+    data= collect_data()
     for wdt in widgets:
-        widgets[wdt].txt= rd()
+        widgets[wdt].txt= data[wdt]
         widgets[wdt].update()
-    Dash.after(500,test_update)
+    Dash.after(500,update)
 
-test_update()
+update()
 Dash.mainloop()
 
 
