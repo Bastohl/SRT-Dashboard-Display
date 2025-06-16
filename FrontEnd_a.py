@@ -12,7 +12,7 @@ Dash.create(divs_swtch)
 divs= Dash.divs
 
 #Left Top~ ind 0
-Btt_Lbl= {'wdt':Label,'info':(divs[0],'BATTERY','#00aeb4',(0.15,0.05),20,'Btt_Lbl','f')}
+Btt_Lbl= {'wdt':Label,'info':(divs[0],'BATTERY','#00aeb4',(0.1,0.05),20,'Btt_Lbl','f')}
 
 #Left 2nd~ ind 1
 LV_Prg= {'wdt':ProgBar,'info':(divs[1],(50,90),(0.1,0.25),'v','LV_Prg','clam',35,bg_clr,'n',(0,100))}
@@ -25,21 +25,21 @@ Splt_lvhv= {'wdt':Shape,'info':(divs[1],'rect',(0.49,0.1),(0,106),'grey','splt_l
 Bspd= {'wdt':Label,'info':(divs[2],'BSPD','#1ab876',(0.25,0.05),18,'Bspd','f')}
 
 #Center Top~ ind 8
-Time_Lbl= {'wdt':Label,'info':(divs[8],'Time: ','grey',(0.03,0.08),20,'Time_Lbl','f')}
-Time= {'wdt':Label,'info':(divs[8],'00:00','grey',(0.43,0.08),20,'Time','u')}
+Time_Lbl= {'wdt':Label,'info':(divs[8],'Time:','grey',(0.03,0.08),20,'Time_Lbl','f')}
+Time= {'wdt':Label,'info':(divs[8],'00:00','grey',(0.46,0.08),20,'Time','u')}
 
 #Center Middle~ ind 9
 Spd= {'wdt':Label,'info':(divs[9],'81.4','#d1733c',(0.08,0.02),60,'Spd','u')}
-Spd_Lbl= {'wdt':Label,'info':(divs[9],'km/h','#00aeb4',(0.3,0.4),20,'Spd_Lbl','f')}
-Rpm= {'wdt':Label,'info':(divs[9],'2056','#d1733c',(0.16,0.55),40,'Rpm','u')}
-Rpm_Lbl= {'wdt':Label,'info':(divs[9],'RPM','#00aeb4',(0.35,0.8),20,'Rpm_Lbl','f')}
+Spd_Lbl= {'wdt':Label,'info':(divs[9],'km/h','#00aeb4',(0.27,0.4),20,'Spd_Lbl','f')}
+Rpm= {'wdt':Label,'info':(divs[9],'2056','#d1733c',(0.2,0.55),40,'Rpm','u')}
+Rpm_Lbl= {'wdt':Label,'info':(divs[9],'RPM','#00aeb4',(0.32,0.8),20,'Rpm_Lbl','f')}
 
 #Center Bottom~ ind 10
 Gear= {'wdt':Label,'info':(divs[10],'N','#00aeb4',(0.08,0.02),55,'Gear','u')}
 SRT= {'wdt':Image,'info':(divs[10],r"C:\Users\titus\Downloads\SRT.png",(0.45,0.02),bg_clr,'SRT')}
 
 #Right Top~ ind 4
-Dist_Lbl= {'wdt':Label,'info':(divs[4],'Distance','#00aeb4',(0.08,0.02),27,'Dist_Lbl','f')}
+Dist_Lbl= {'wdt':Label,'info':(divs[4],'Distance','#00aeb4',(0.05,0.02),22,'Dist_Lbl','f')}
 Dist= {'wdt':Label,'info':(divs[4],'0.34','#d1733c',(0.23,0.33),32,'Dist','u')}
 Dist_Unt= {'wdt':Label,'info':(divs[4],'km','#00aeb4',(0.35,0.67),23,'Dist_Unt','f')}
 
@@ -55,7 +55,7 @@ TPS= {'wdt':Label,'info':(divs[6],'TPS','#00aeb4',(0.35,0.05),18,'TPS','f')}
 Btt_Tmp_Ttl= {'wdt':Label,'info':(divs[6],'Battery Temp','#00aeb4',(0.05,0.05),18,'Btt_Temp','f')}
 
 #Right 3rd C~ ind 6
-TPM= {'wdt':Label,'info':(divs[6],'Tire Pressures','#00aeb4',(0.05,0.05),16,'TPM','f')}
+TPM= {'wdt':Label,'info':(divs[6],'Tire Pressures','#00aeb4',(0.05,0.05),18,'TPM','f')}
 
 #Right 3rd D~ ind 6
 BrTM= {'wdt':Label,'info':(divs[6],'Brake Temps','#00aeb4',(0.08,0.05),18,'BTM','f')}
@@ -77,12 +77,12 @@ FL= {'wdt':ProgBar,'info':(divs[7],(15,50),(0.3,0.05),'v','FL','clam',90,bg_clr,
 FR= {'wdt':ProgBar,'info':(divs[7],(15,50),(0.55,0.05),'v','FR','clam',35,bg_clr,'r',(15,25))}
 RL= {'wdt':ProgBar,'info':(divs[7],(15,50),(0.3,0.55),'v','RL','clam',70,bg_clr,'r',(15,25))}
 RR= {'wdt':ProgBar,'info':(divs[7],(15,50),(0.55,0.55),'v','RR','clam',20,bg_clr,'r',(15,25))}
-FL_Lbl= {'wdt':Label,'info':(divs[7],'25','#d1733c',(0.07,0.02),16,'FL_Lbl','u')}
-FL_Lbl_Unt= {'wdt':Label,'info':(divs[7],'Psi','#00aeb4',(0.07,0.22),16,'FL_Lbl_Unt','f')}
+FL_Lbl= {'wdt':Label,'info':(divs[7],'25','#d1733c',(0.08,0.02),16,'FL_Lbl','u')}
+FL_Lbl_Unt= {'wdt':Label,'info':(divs[7],'Psi','#00aeb4',(0.05,0.22),16,'FL_Lbl_Unt','f')}
 FR_Lbl= {'wdt':Label,'info':(divs[7],'31','#d1733c',(0.67,0.02),16,'FR_Lbl','u')}
 FR_Lbl_Unt= {'wdt':Label,'info':(divs[7],'Psi','#00aeb4',(0.67,0.22),16,'FR_Lbl_Unt','f')}
-RL_Lbl= {'wdt':Label,'info':(divs[7],'30','#d1733c',(0.07,0.55),16,'RL_Lbl','u')}
-RL_Lbl_Unt= {'wdt':Label,'info':(divs[7],'Psi','#00aeb4',(0.07,0.75),16,'RL_Lbl_Unt','f')}
+RL_Lbl= {'wdt':Label,'info':(divs[7],'30','#d1733c',(0.08,0.55),16,'RL_Lbl','u')}
+RL_Lbl_Unt= {'wdt':Label,'info':(divs[7],'Psi','#00aeb4',(0.05,0.75),16,'RL_Lbl_Unt','f')}
 RR_Lbl= {'wdt':Label,'info':(divs[7],'27','#d1733c',(0.67,0.55),16,'RR_Lbl','u')}
 RR_Lbl_Unt= {'wdt':Label,'info':(divs[7],'Psi','#00aeb4',(0.67,0.75),16,'RR_Lbl_Unt','f')}
 
@@ -122,7 +122,7 @@ def collect_data():
     sample_data= {'LV_Prg': 60,'HV_Prg': 20,'Dist': 17.51,'Thrt': 15,'Brk': 90,'Btt_Tmp': 30,
                   'FL': 18,'FR': 17,'RL': 21,'RR': 22,
                   'FL_Br': 228,'FR_Br': 217,'RL_Br': 198,'RR_Br': 205,                  
-                  'Time': '1:07:45','Spd': 57.80,'Rpm': 1964,'Gear': 'D'}
+                  'Time': '1:07:45','Spd': 57.80,'Rpm': 2964,'Gear': 'D'}
     
     progbars= ['FL','FR','RL','RR','FL_Br','FR_Br','RL_Br','RR_Br','Btt_Tmp']
     labels= ['FL_Lbl','FR_Lbl','RL_Lbl','RR_Lbl','FL_Br_Lbl','FR_Br_Lbl','RL_Br_Lbl','RR_Br_Lbl','Btt_Tmp_Val']
